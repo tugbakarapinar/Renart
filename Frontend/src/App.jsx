@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'; 
 import axios from 'axios'; 
 
-const API_URL = 'renart-6959.vercel.app'; 
+const API_URL = 'http://localhost:5173'; 
 
 const COLOR_MAP = {
   yellow: { name: "Yellow Gold", hex: "#E6CA97" }, 
