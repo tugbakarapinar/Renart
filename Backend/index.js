@@ -1,16 +1,23 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
-
+const path = require('path');  
 const app = express();
 const PORT = 5001;
 
-app.use(cors({ origin: 'http://localhost:5173' })); 
+
+app.use(cors({ 
+    origin: [
+        'https://renartfrontend.vercel.app',
+        'http://localhost:5173'
+    ] 
+}));  
 
 app.use(express.json());
 
-const rawData = fs.readFileSync('./products.json', 'utf8');
-const products = JSON.parse(rawData);
+
+const rawData = fs.readFileSync(path.join(__dirname, 'products.json'), 'utf8');
+const products = JSON.parse(rawData);  // ← AYRI SATIR
 
 const getGoldPricePerGram = async () => {
     return 65.00;
@@ -41,5 +48,5 @@ app.get('/api/products', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`✅ Backend Server is running on http://localhost:${PORT}`);
+    console.log(` Backend Server is running on http://localhost:${PORT}`);
 });
