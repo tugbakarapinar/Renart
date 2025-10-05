@@ -3,6 +3,8 @@ import axios from 'axios';
 
 const API_URL = 'https://renartbackend.vercel.app'; 
 
+
+
 const COLOR_MAP = {
   yellow: { name: "Yellow Gold", hex: "#E6CA97" }, 
   white: { name: "White Gold", hex: "#D9D9D9" }, 
@@ -19,7 +21,7 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(API_URL);
+        const response = await axios.get(`${API_URL}/api/products`);  
         setProducts(response.data);
       } catch (err) {
         console.error("API'den veri çekilemedi:", err);
